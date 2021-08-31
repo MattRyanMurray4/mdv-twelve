@@ -1,1 +1,17 @@
-<p>toys works!</p>
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <toys-toys-list
+      [toys]="toys$ | async"
+      (selected)="selectToy($event)"
+      (deleted)="deleteToy($event)"
+    ></toys-toys-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <toys-toy-details
+      [form]="form"
+      [toy]="selectedToy$ | async"
+      (saved)="saveToy($event)"
+      (cancelled)="cancel()"
+    ></toys-toy-details>
+  </div>
+</div>

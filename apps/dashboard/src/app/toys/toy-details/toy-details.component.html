@@ -1,1 +1,70 @@
-<p>toy-details works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>
+        <span *ngIf="currentToy.id; else createNewToy">
+          Update {{ originalName }}
+        </span>
+      </h1>
+      <ng-template #createNewToy> Submit a New Toy </ng-template>
+    </mat-card-title>
+  </mat-card-header>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="saveForm(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          type="text"
+          name="name"
+        />
+        <mat-error *ngIf="form.get('name')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Brand</mat-label>
+        <input
+          matInput
+          placeholder="Brand"
+          formControlName="brand"
+          type="text"
+          name="brand"
+        />
+        <mat-error *ngIf="form.get('brand')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Year-Made</mat-label>
+        <input
+          matInput
+          placeholder="Year-Made"
+          formControlName="yearMade"
+          type="text"
+          name="yearMade"
+        />
+        <mat-error *ngIf="form.get('yearMade')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Cost</mat-label>
+        <input
+          matInput
+          placeholder="Cost"
+          formControlName="cost"
+          type="text"
+          name="cost"
+        />
+        <mat-error *ngIf="form.get('cost')">Required Field</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-button [disabled]="form.invalid">
+        {{ currentToy.id ? 'Update' : 'Submit' }}
+      </button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -135,6 +135,9 @@
               "apps/dashboard/src/assets"
             ],
             "styles": ["apps/dashboard/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/theme/src/lib/"]
+            },
             "scripts": []
           },
           "configurations": {
