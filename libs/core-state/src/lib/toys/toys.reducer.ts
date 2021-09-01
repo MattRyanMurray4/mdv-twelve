@@ -62,8 +62,8 @@ const _toysReducer = createReducer(
   ),
   on(ToysActions.loadToysFailure, (state, { error }) => ({ ...state, error })),
   on(ToysActions.selectToy, (state, { toyId }) => ({
-    selectedId: toyId,
     ...state,
+    selectedId: toyId,
   })),
   on(ToysActions.createToySuccess, (state, { toy }) =>
     toysAdapter.addOne(toy, { ...state, loaded: true })
